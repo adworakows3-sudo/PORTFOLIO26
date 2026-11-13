@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-cobalt: #1447e6;
+  --color-ink: #101828;
+  --color-paper: #f4f5f1;
+  --color-mist: #e8edf8;
+  --font-sans: "Manrope", sans-serif;
+  --font-serif: "DM Serif Display", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    background: #f4f5f1;
+    color: #101828;
+    font-family: "Manrope", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: #1447e6;
+    color: white;
+  }
+
+  a,
+  button {
+    outline-offset: 4px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #1447e6;
+  }
+}
+
+@layer components {
+  .content-wrap {
+    width: min(100% - 2.5rem, 1280px);
+    margin-inline: auto;
+  }
+
+  .display {
+    font-size: clamp(3.2rem, 7.4vw, 7.6rem);
+    font-weight: 500;
+    letter-spacing: -0.065em;
+    line-height: 0.92;
+  }
+
+  .section-title {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(3rem, 6vw, 5.75rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+
+  .eyebrow,
+  .meta-label {
+    color: #1447e6;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .meta-label {
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-link {
+    position: relative;
+    padding-block: 0.4rem;
+  }
+
+  .nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: #1447e6;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 220ms ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .button-small,
+  .button-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: #1447e6;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.85rem 1.1rem;
+    text-transform: uppercase;
+    transition:
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .button-small:hover {
+    background: #101828;
+  }
+
+  .button-light {
+    background: white;
+    color: #101828;
+    padding: 1rem 1.25rem;
+  }
+
+  .button-light:hover {
+    background: #a8c7ff;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #1447e6;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .text-link svg {
+    transition: transform 180ms ease;
+  }
+
+  .text-link:hover svg {
+    transform: translateX(4px) rotate(90deg);
+  }
+
+  .menu-line {
+    position: absolute;
+    left: 0;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #101828;
+    transition: transform 180ms ease;
+  }
+
+  .project-card:nth-child(2),
+  .project-card:nth-child(5) {
+    margin-top: 4rem;
+  }
+
+  .case-heading {
+    display: grid;
+    gap: 2.5rem;
+    border-bottom: 1px solid rgb(20 71 230 / 0.2);
+    padding-bottom: 2.5rem;
+  }
+
+  .case-intro {
+    max-width: 34rem;
+    align-self: end;
+    color: rgb(16 24 40 / 0.65);
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .body-copy {
+    color: rgb(16 24 40 / 0.65);
+    line-height: 1.8;
+  }
+}
+
+@media (min-width: 768px) {
+  @layer components {
+    .content-wrap {
+      width: min(100% - 5rem, 1280px);
+    }
+
+    .case-heading {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: end;
+      padding-bottom: 3.5rem;
+    }
+
+    .case-heading > :first-child {
+      grid-column: span 7 / span 7;
+    }
+
+    .case-heading > :last-child {
+      grid-column: span 5 / span 5;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  @layer components {
+    .project-card:nth-child(2),
+    .project-card:nth-child(5) {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  @layer components {
+    .project-card:nth-child(2),
+    .project-card:nth-child(5) {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
