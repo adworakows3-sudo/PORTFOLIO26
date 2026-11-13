@@ -1,0 +1,10 @@
+{
+  "description": "Create a polished, cobalt-themed student design portfolio that standardizes PDF projects into a cohesive presentation for college and job applications.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
